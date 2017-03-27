@@ -46,6 +46,14 @@ class XeroServiceProvider extends ServiceProvider
            return new \XeroPHP\Models\Accounting\Invoice();
         });
 
+        $this->app->bind('XeroPurchaseOrder', function(){
+           return new \XeroPHP\Models\Accounting\PurchaseOrder();
+        });
+
+        $this->app->bind('XeroPurchaseOrderLine', function(){
+            return new \XeroPHP\Models\Accounting\PurchaseOrder\LineItem();
+        });
+
         $this->app->bind('XeroPayment', function(){
            return new \XeroPHP\Models\Accounting\Payment();
         });
