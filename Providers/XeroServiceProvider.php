@@ -9,6 +9,7 @@ class XeroItem extends \XeroPHP\Models\Accounting\Item
   public static function getProperties()
   {
        $properties = parent::getProperties();
+       $properties['InventoryAssetAccountCode'] = [flase, self::PROPERTY_TYPE_STRING, null, false, false];
        return $properties;
    }
 }
