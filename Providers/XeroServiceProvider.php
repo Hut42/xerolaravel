@@ -54,14 +54,14 @@ class XeroServiceProvider extends ServiceProvider
 
         $this->app->bind('XeroItem', function(){
            return new XeroItem();
-        });
-
+         });
+         
         $this->app->bind('XeroInvoice', function(){
            return new \XeroPHP\Models\Accounting\Invoice();
         });
 
         $this->app->bind('XeroPurchase', function(){
-           return new XeroPHP\Models\Accounting\Item\Purchase();
+           return new \XeroPHP\Models\Accounting\Item\Purchase();
         });
 
         $this->app->bind('XeroPurchaseOrder', function(){
