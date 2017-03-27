@@ -4,6 +4,15 @@ namespace DrawMyAttention\XeroLaravel\Providers;
 use Illuminate\Contracts\Filesystem\Filesystem;
 use Illuminate\Support\ServiceProvider;
 
+class XeroItem extends \XeroPHP\Models\Accounting\Item
+{
+  public static function getProperties()
+  {
+       $properties = parent::getProperties();
+       return $properties;
+   }
+}
+
 class XeroServiceProvider extends ServiceProvider
 {
     private $config = 'xero/config.php';
@@ -40,6 +49,10 @@ class XeroServiceProvider extends ServiceProvider
 
         $this->app->bind('XeroPartner', function () use ($config) {
             return new \XeroPHP\Application\PartnerApplication($config);
+        });
+
+        $this->app->bind('XeroItem', function(){
+           return new XeroItem();
         });
 
         $this->app->bind('XeroInvoice', function(){
