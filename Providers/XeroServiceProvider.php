@@ -12,6 +12,26 @@ class XeroItem extends \XeroPHP\Models\Accounting\Item
        $properties['InventoryAssetAccountCode'] = [false, self::PROPERTY_TYPE_STRING, null, false, false];
        return $properties;
    }
+
+   public function addSalesDetail(Sale $value)
+   {
+       $this->propertyUpdated('SalesDetails', $value);
+       if (!isset($this->_data['SalesDetails'])) {
+           $this->_data['SalesDetails'] = new Remote\Collection();
+       }
+       $this->_data['SalesDetails'] = $value;
+       return $this;
+   }
+
+   public function addPurchaseDetail(Purchase $value)
+    {
+        $this->propertyUpdated('PurchaseDetails', $value);
+        if (!isset($this->_data['PurchaseDetails'])) {
+            $this->_data['PurchaseDetails'] = new Remote\Collection();
+        }
+        $this->_data['PurchaseDetails'] = $value;
+        return $this;
+    }
 }
 
 class XeroServiceProvider extends ServiceProvider
@@ -55,7 +75,7 @@ class XeroServiceProvider extends ServiceProvider
         $this->app->bind('XeroItem', function(){
            return new XeroItem();
          });
-         
+
         $this->app->bind('XeroInvoice', function(){
            return new \XeroPHP\Models\Accounting\Invoice();
         });
