@@ -13,6 +13,7 @@ class XeroItem extends \XeroPHP\Models\Accounting\Item
        return $properties;
    }
 
+   /*
    public function addSalesDetail(Sale $value)
    {
        $this->propertyUpdated('SalesDetails', $value);
@@ -32,6 +33,7 @@ class XeroItem extends \XeroPHP\Models\Accounting\Item
         $this->_data['PurchaseDetails'] = $value;
         return $this;
     }
+  */
 }
 
 class XeroServiceProvider extends ServiceProvider
